@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.security.cert.TrustAnchor;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -210,8 +209,10 @@ public class TripPoint {
 	}
 
 	/**
+	 * checks for groups of three or more points that are all within a certain distance of each other with a stop radius of 0.5 km
+	 * initializes and fills the movingTrip ArrayList with only the points that are moving
 	 * 
-	 * @return
+	 * @return returns the number of stops in the trip ArrayList using the second heuristic
 	 */
 	public static int h2StopDetection() {
 		movingTrip = new ArrayList<TripPoint>();
