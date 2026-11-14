@@ -103,10 +103,21 @@ public class TripPoint {
 		return hours;
 	}
 
+	/**
+	 * finds the total points that are moving and finds the total time in minutes
+	 * then it divides by 60.0 to find the hours
+	 * 
+	 * @return
+	 */
 	public static double movingTime() {
 		return ((movingTrip.size() * 5) - 5) / 60.0;
 	}
 
+	/**
+	 * subtracts the total time in hours by moving time in hours
+	 * 
+	 * @return
+	 */
 	public static double stoppedTime() {
 		return (totalTime() - movingTime());
 	}
@@ -165,6 +176,8 @@ public class TripPoint {
 	}
 
 	/**
+	 * checks if a point is within a certain distance from the previous point using displacement threshold of 0.6 km
+	 * initialize and fill the movingTrip ArrayList with only the points that are moving
 	 * 
 	 * @return returns the number of stops in the trip ArrayList
 	 */
