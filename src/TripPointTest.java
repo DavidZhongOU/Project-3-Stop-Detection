@@ -29,6 +29,8 @@ class TripPointTest {
 	
 	@Test
 	void testHeuristic2() throws FileNotFoundException, IOException {
+		TripPoint.readFile("triplog.csv");
+
 		int stops = TripPoint.h2StopDetection();
 		assertEquals(239, stops);
 		ArrayList<TripPoint> moving = TripPoint.getMovingTrip();
@@ -65,8 +67,6 @@ class TripPointTest {
 	
 	@Test
 	void testAvgMovingSpeed() throws FileNotFoundException, IOException {
-		TripPoint.readFile("triplog.csv");
-
 		TripPoint.h1StopDetection();
 		BigDecimal actual = new BigDecimal(Double.toString(TripPoint.avgMovingSpeed()));
 		actual = actual.setScale(1, RoundingMode.HALF_UP);

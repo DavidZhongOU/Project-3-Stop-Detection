@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.cert.TrustAnchor;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -189,7 +190,7 @@ public class TripPoint {
 	 * checks if a point is within a certain distance from the previous point using displacement threshold of 0.6 km
 	 * initialize and fill the movingTrip ArrayList with only the points that are moving
 	 * 
-	 * @return returns the number of stops in the trip ArrayList
+	 * @return returns the number of stops in the trip ArrayList using first heuristic
 	 */
 	public static int h1StopDetection() {
 		movingTrip = new ArrayList<TripPoint>();
@@ -213,7 +214,46 @@ public class TripPoint {
 	 * @return
 	 */
 	public static int h2StopDetection() {
-		return 0;
+		movingTrip = new ArrayList<TripPoint>();
+
+		int numStops = 0;
+		ArrayList<TripPoint> stopPoints = new ArrayList<TripPoint>();
+		for (int i = 0; i < trip.size(); i++) {
+			if (stopPoints.isEmpty()) {
+				stopPoints.add(trip.get(i));
+				continue;
+			}
+
+			for (int j = 0; j < stopPoints.size(); j++) {
+				if (haversineDistance(trip.get(i), stopPoints.get(j)) <= 0.5) {
+					stopPoints.add(trip.get(i));
+					break;
+				}
+
+				if (stopPoints.get(j).equals(stopPoints.get(stopPoints.size()-1))) {
+					if (stopPoints.size() >= 3) {
+						numStops += stopPoints.size();
+					}
+					else {
+						movingTrip.addAll(stopPoints);
+					}
+
+					stopPoints = new ArrayList<TripPoint>();
+					stopPoints.add(trip.get(i));
+				}
+			}
+		}
+
+		if (!stopPoints.isEmpty() ) {
+			if (stopPoints.size() >= 3) {
+				numStops += stopPoints.size();
+			}
+			else {
+				movingTrip.addAll(stopPoints);
+			}
+		}
+
+		return numStops;
 	}
 
 }
