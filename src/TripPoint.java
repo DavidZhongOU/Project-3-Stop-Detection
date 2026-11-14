@@ -11,6 +11,7 @@ public class TripPoint {
 	private int time;	// time in minutes
 	
 	private static ArrayList<TripPoint> trip;	// ArrayList of every point in a trip
+	private static ArrayList<TripPoint> movingTrip;
 
 	// default constructor
 	public TripPoint() {
