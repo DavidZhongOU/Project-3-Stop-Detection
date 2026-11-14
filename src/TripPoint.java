@@ -108,7 +108,7 @@ public class TripPoint {
 	}
 
 	public static double stoppedTime() {
-		return 0.0;
+		return (totalTime() - movingTime());
 	}
 	
 	// finds the total distance traveled over the trip
