@@ -143,4 +143,20 @@ public class TripPoint {
 		fileScanner.close();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public int h1StopDetection() {
+		
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int h2StopDetection() {
+		
+	}
+
 }
