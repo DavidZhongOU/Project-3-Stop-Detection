@@ -91,12 +91,24 @@ public class TripPoint {
 		
 		return kmpmin*60;
 	}
+
+	public static double avgMovingSpeed() {
+		return 0.0;
+	}
 	
 	// returns the total time of trip in hours
 	public static double totalTime() {
 		int minutes = trip.get(trip.size()-1).getTime();
 		double hours = minutes / 60.0;
 		return hours;
+	}
+
+	public static double movingTime() {
+		return 0.0;
+	}
+
+	public static double stoppedTime() {
+		return 0.0;
 	}
 	
 	// finds the total distance traveled over the trip
@@ -160,7 +172,7 @@ public class TripPoint {
 		movingTrip = new ArrayList<TripPoint>();
 
 		int numStops = 0;
-		for (int i = 0; i < trip.size(); i++) {
+		for (int i = 0; i < trip.size()-1; i++) {
 			if (haversineDistance(trip.get(i), trip.get(i+1)) > 0.6) {
 				if (movingTrip.size() != 0 && trip.get(i) != movingTrip.get(movingTrip.size()-1)) {
 					movingTrip.add(trip.get(i));
@@ -179,8 +191,8 @@ public class TripPoint {
 	 * 
 	 * @return
 	 */
-	// public static int h2StopDetection() {
-		
-	// }
+	public static int h2StopDetection() {
+		return 0;
+	}
 
 }
