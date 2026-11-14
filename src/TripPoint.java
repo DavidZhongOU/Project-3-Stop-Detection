@@ -147,7 +147,7 @@ public class TripPoint {
 	 * 
 	 * @return
 	 */
-	public int h1StopDetection() {
+	public static int h1StopDetection() {
 		
 	}
 
@@ -155,7 +155,7 @@ public class TripPoint {
 	 * 
 	 * @return
 	 */
-	public int h2StopDetection() {
+	public static int h2StopDetection() {
 		
 	}
 
