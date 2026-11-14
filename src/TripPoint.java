@@ -146,18 +146,33 @@ public class TripPoint {
 
 	/**
 	 * 
-	 * @return
+	 * @return returns the number of stops in the trip ArrayList
 	 */
 	public static int h1StopDetection() {
-		
+		movingTrip = new ArrayList<TripPoint>();
+
+		int numStops = 0;
+		for (int i = 0; i < trip.size(); i++) {
+			if (haversineDistance(trip.get(i), trip.get(i+1)) > 0.6) {
+				if (movingTrip.size() != 0 && trip.get(i) != movingTrip.get(movingTrip.size()-1)) {
+					movingTrip.add(trip.get(i));
+				}
+				movingTrip.add(trip.get(i+1));
+			}
+			else {
+				numStops++;
+			}
+		}
+
+		return numStops;
 	}
 
 	/**
 	 * 
 	 * @return
 	 */
-	public static int h2StopDetection() {
+	// public static int h2StopDetection() {
 		
-	}
+	// }
 
 }
