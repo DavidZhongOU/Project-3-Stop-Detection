@@ -39,6 +39,8 @@ class TripPointTest {
 	
 	@Test
 	void testMovingTime() throws FileNotFoundException, IOException {
+		TripPoint.readFile("triplog.csv");
+
 		TripPoint.h1StopDetection();
 		BigDecimal actual = new BigDecimal(Double.toString(TripPoint.movingTime()));
 		actual = actual.setScale(3, RoundingMode.HALF_UP);

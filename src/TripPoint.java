@@ -104,7 +104,7 @@ public class TripPoint {
 	}
 
 	public static double movingTime() {
-		return (movingTrip.size() * 5) / 60.0;
+		return ((movingTrip.size() * 5) - 5) / 60.0;
 	}
 
 	public static double stoppedTime() {
