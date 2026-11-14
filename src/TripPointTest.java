@@ -52,8 +52,6 @@ class TripPointTest {
 	
 	@Test
 	void testStoppedTime() throws FileNotFoundException, IOException {
-		TripPoint.readFile("triplog.csv");
-
 		TripPoint.h1StopDetection();
 		BigDecimal actual = new BigDecimal(Double.toString(TripPoint.stoppedTime()));
 		actual = actual.setScale(3, RoundingMode.HALF_UP);
@@ -67,6 +65,8 @@ class TripPointTest {
 	
 	@Test
 	void testAvgMovingSpeed() throws FileNotFoundException, IOException {
+		TripPoint.readFile("triplog.csv");
+
 		TripPoint.h1StopDetection();
 		BigDecimal actual = new BigDecimal(Double.toString(TripPoint.avgMovingSpeed()));
 		actual = actual.setScale(1, RoundingMode.HALF_UP);
