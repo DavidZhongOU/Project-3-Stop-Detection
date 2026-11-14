@@ -46,6 +46,14 @@ public class TripPoint {
 	public static ArrayList<TripPoint> getTrip() {
 		return new ArrayList<>(trip);
 	}
+
+	/**
+	 * 
+	 * @return returns a copy of the movingTrip ArrayList
+	 */
+	public static ArrayList<TripPoint> getMovingTrip() {
+		return new ArrayList<TripPoint>(movingTrip);
+	}
 	
 	// uses the haversine formula for great sphere distance between two points
 	public static double haversineDistance(TripPoint first, TripPoint second) {
